@@ -1,0 +1,62 @@
+@font-face {
+    font-family: 'UniversCondensed';
+    src: url('fonts/Univers-Condensed.eot') format('embedded-opentype'),
+    	url('fonts/Univers-Condensed.ttf') format('truetype'),
+    	url('fonts/Univers-Condensed.otf') format('opentype'),
+        url('fonts/Univers-Condensed.woff') format('woff');
+}
+
+@font-face {
+    font-family: 'UniversCondensedLight';
+    src: url('fonts/Univers-CondensedLight.eot') format('embedded-opentype'),
+    	url('fonts/Univers-CondensedLight.ttf') format('truetype'),
+    	url('fonts/Univers-CondensedLight.otf') format('opentype'),
+        url('fonts/Univers-CondensedLight.woff') format('woff');
+}
+
+@font-face {
+    font-family: 'UniversCondensedBold';
+    src: url('fonts/Univers-CondensedBold.eot') format('embedded-opentype'),
+    	url('fonts/Univers-CondensedBold.ttf') format('truetype'),
+    	url('fonts/Univers-CondensedBold.otf') format('opentype'),
+        url('fonts/Univers-CondensedBold.woff') format('woff');
+}
+
+@font-face {
+    font-family: 'UniversExtraBlackExt';
+    src: url('fonts/Univers-ExtraBlackExt.eot') format('embedded-opentype'),
+    	url('fonts/Univers-ExtraBlackExt.ttf') format('truetype'),
+    	url('fonts/Univers-ExtraBlackExt.otf') format('opentype'),
+        url('fonts/Univers-ExtraBlackExt.woff') format('woff');
+}
+
+body { background: #1f262b; color: #fff;}
+
+.statusbar-overlay {
+    background: #e2e41d;
+}
+
+.table { border: 1px solid #303b43; }
+.table tbody td { color: #fff; }
+.table tbody tr:nth-child(even) {background: #242c32; }
+.table-search { }
+.navbar { background: #000; color: #fff; }
+.navbar a { color: #fff; }
+#head-logo {  }
+	#head-logo img { }
+.welcome-header { font-family: UniversCondensed, arial, san-serif; color: #fff; }
+.page-header { background: #e2e41d; color: #000; font-family: UniversCondensed, arial, san-serif; }
+.page { background: #1f262b; color: #fff; }
+.navbar::after, .toolbar::before { background-color: #303b43; }
+#dashboardMenuWrapper { }
+.dashboardMenu { }
+.dashboardMenu a { color: #000;
+background: #e2e41d; /* Old browsers */
+background: -moz-linear-gradient(top,  #d2d001 0%, #e2e41d 100%); /* FF3.6-15 */
+background: -webkit-linear-gradient(top,  #d2d001 0%,#e2e41d 100%); /* Chrome10-25,Safari5.1-6 */
+background: linear-gradient(to bottom,  #d2d001 0%,#e2e41d 100%); /* W3C, IE10+, FF16+, Chrome26+, Opera12+, Safari7+ */
+filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#d2d001', endColorstr='#e2e41d',GradientType=0 ); /* IE6-9 */
+}
+.dashboardMenu i { font-size: 48px; display: block; margin: 0 0 -12px 0; }
+.toolbar { background: #007aff; color: #fff; font-family: UniversCondensed, arial, san-serif; }
+.toolbar a { color: #fff; }
