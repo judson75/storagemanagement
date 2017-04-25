@@ -14,6 +14,11 @@ h3 { font-size: 32px; margin: 10px 0 15px 0; }
 
 #home-button { margin-top: 10px; }
 
+/* Loader */
+.ui-icon-loading {
+	background: url("../img/ajax-loader.gif");
+	background-size: 2.875em 2.875em;
+}
 .ui-bar-c,
 .ui-page-theme-c .ui-bar-inherit,
 html .ui-bar-c .ui-bar-inherit,

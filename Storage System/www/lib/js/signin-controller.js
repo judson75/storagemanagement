@@ -80,8 +80,9 @@ Login.SignInController.prototype.onSignInCommand = function () {
         url: Login.Settings.signInUrl,
         data: {'email': emailAddress, 'password' : password},
         success: function (resp) {
+			console.log("RESP: " + resp.code);
             $.mobile.loading("hide");
-            if (resp.code == 1) {
+            if (resp.code === 1) {
                 // Create session. 
                 var today = new Date();
                 var expirationDate = new Date();

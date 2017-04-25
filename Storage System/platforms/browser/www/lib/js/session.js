@@ -1,7 +1,6 @@
 var Login = Login || {};
 
 Login.Session = (function () {
-
     var instance;
 
     function init() {

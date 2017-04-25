@@ -74,7 +74,7 @@ $(document).on("pagecontainerbeforechange", function (event, ui) {
         case "page-index":
             if (!ui.prevPage) {
                 // Check session.keepSignedIn and redirect to main menu.
-                var session = BookIt.Session.getInstance().get(),
+                var session = Login.Session.getInstance().get(),
                     today = new Date();
                 if (session && session.keepSignedIn && new Date(session.expirationDate).getTime() > today.getTime()) {
                     ui.toPage = $("#page-main-menu");                }
