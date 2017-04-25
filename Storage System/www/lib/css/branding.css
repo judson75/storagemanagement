@@ -575,8 +575,8 @@ html .ui-bar-b .ui-slider-track .ui-btn-active,
 html .ui-body-b .ui-slider-track .ui-btn-active,
 html body .ui-group-theme-b .ui-slider-track .ui-btn-active,
 html body div.ui-slider-track.ui-body-b .ui-btn-active {
-	background-color: #3388cc /*{b-active-background-color}*/;
-	border-color: #1c4a70 /*{b-active-border}*/;
+	background-color: #890300 /*{b-active-background-color}*/;
+	border-color: #890300 /*{b-active-border}*/;
 	color: #ffffff /*{b-active-color}*/;
 	text-shadow: 0 /*{b-active-shadow-x}*/ 1px /*{b-active-shadow-y}*/ 0 /*{b-active-shadow-radius}*/ #005599 /*{b-active-shadow-color}*/;
 }
@@ -586,7 +586,7 @@ html .ui-bar-b .ui-radio-on:after,
 html .ui-body-b .ui-radio-on:after,
 html body .ui-group-theme-b .ui-radio-on:after,
 .ui-btn.ui-radio-on.ui-btn-b:after {
-	border-color: #3388cc /*{b-active-background-color}*/;
+	border-color: #890300 /*{b-active-background-color}*/;
 }
 /* Focus */
 .ui-page-theme-b .ui-btn:focus,
@@ -601,9 +601,9 @@ html .ui-body-b .ui-focus,
 html body .ui-group-theme-b .ui-focus,
 html head + body .ui-btn-b.ui-focus,
 html head + body .ui-body-b.ui-focus {
-	-webkit-box-shadow: 0 0 12px #3388cc /*{b-active-background-color}*/;
-	-moz-box-shadow: 0 0 12px #3388cc /*{b-active-background-color}*/;
-	box-shadow: 0 0 12px #3388cc /*{b-active-background-color}*/;
+	-webkit-box-shadow: 0 0 12px #890300 /*{b-active-background-color}*/;
+	-moz-box-shadow: 0 0 12px #890300 /*{b-active-background-color}*/;
+	box-shadow: 0 0 12px #890300 /*{b-active-background-color}*/;
 }
 
 
@@ -644,26 +644,26 @@ html .ui-panel-page-container-c {
 html .ui-bar-c a,
 html .ui-body-c a,
 html body .ui-group-theme-c a {
-	color: #3388cc /*{c-link-color}*/;
+	color: #c40500;
 	font-weight: bold;
 }
 .ui-page-theme-c a:visited,
 html .ui-bar-c a:visited,
 html .ui-body-c a:visited,
 html body .ui-group-theme-c a:visited {
-    color: #3388cc /*{c-link-visited}*/;
+    color: #890300;
 }
 .ui-page-theme-c a:hover,
 html .ui-bar-c a:hover,
 html .ui-body-c a:hover,
 html body .ui-group-theme-c a:hover {
-	color: #005599 /*{c-link-hover}*/;
+	color: #890300;
 }
 .ui-page-theme-c a:active,
 html .ui-bar-c a:active,
 html .ui-body-c a:active,
 html body .ui-group-theme-c a:active {
-	color: #005599 /*{c-link-active}*/;
+	color: #890300;
 }
 /* Button up */
 .ui-page-theme-c .ui-btn,

@@ -1,4 +1,4 @@
-var BookIt = BookIt || {};
+var Login = Login || {};
 
 // Begin boilerplate code generated with Cordova project.
 
@@ -35,7 +35,8 @@ $(document).on("mobileinit", function (event, ui) {
     $.mobile.defaultPageTransition = "slide";
 });
 
-app.signupController = new BookIt.SignUpController();
+app.signupController = new Login.SignUpController();
+app.signinController = new Login.SignInController();
 
 $(document).on("pagecontainerbeforeshow", function (event, ui) {
     if (typeof ui.toPage == "object") {
@@ -43,6 +44,10 @@ $(document).on("pagecontainerbeforeshow", function (event, ui) {
             case "page-signup":
                 // Reset the signup form.
                 app.signupController.resetSignUpForm();
+                break;
+			case "page-signin":
+                // Reset signin form.
+                app.signinController.resetSignInForm();
                 break;
         }
     }
@@ -54,4 +59,25 @@ $(document).delegate("#page-signup", "pagebeforecreate", function () {
         app.signupController.onSignupCommand();
     });
 
+});
+
+$(document).delegate("#page-signin", "pagebeforecreate", function () {
+    app.signinController.init();
+    app.signinController.$btnSubmit.off("tap").on("tap", function () {
+        app.signinController.onSignInCommand();
+    });
+});
+
+$(document).on("pagecontainerbeforechange", function (event, ui) {
+    if (typeof ui.toPage !== "object") return;
+    switch (ui.toPage.attr("id")) {
+        case "page-index":
+            if (!ui.prevPage) {
+                // Check session.keepSignedIn and redirect to main menu.
+                var session = BookIt.Session.getInstance().get(),
+                    today = new Date();
+                if (session && session.keepSignedIn && new Date(session.expirationDate).getTime() > today.getTime()) {
+                    ui.toPage = $("#page-main-menu");                }
+            }
+    }
 });

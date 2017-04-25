@@ -1,6 +1,6 @@
-﻿var BookIt = BookIt || {};
+﻿var Login = Login || {};
 
-BookIt.SignUpController = function () {
+Login.SignUpController = function () {
 
     this.$signUpPage = null;
     this.$btnSubmit = null;
@@ -12,7 +12,7 @@ BookIt.SignUpController = function () {
     this.$txtPasswordConfirm = null;
 };
 
-BookIt.SignUpController.prototype.init = function () {
+Login.SignUpController.prototype.init = function () {
     this.$signUpPage = $("#page-signup");
     this.$btnSubmit = $("#btn-submit", this.$signUpPage);
     this.$ctnErr = $("#ctn-err", this.$signUpPage);
@@ -23,21 +23,21 @@ BookIt.SignUpController.prototype.init = function () {
     this.$txtPasswordConfirm = $("#txt-password-confirm", this.$signUpPage);
 };
 
-BookIt.SignUpController.prototype.passwordsMatch = function (password, passwordConfirm) {
+Login.SignUpController.prototype.passwordsMatch = function (password, passwordConfirm) {
     return password === passwordConfirm;
 };
 
-BookIt.SignUpController.prototype.passwordIsComplex = function (password) {
+Login.SignUpController.prototype.passwordIsComplex = function (password) {
     // TODO: implement complex password rules here.  There should be similar rule on the server side.
     return true;
 };
 
-BookIt.SignUpController.prototype.emailAddressIsValid = function (email) {
+Login.SignUpController.prototype.emailAddressIsValid = function (email) {
     var re = /^(([^<>()[\]\\.,;:\s@\"]+(\.[^<>()[\]\\.,;:\s@\"]+)*)|(\".+\"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
     return re.test(email);
 };
 
-BookIt.SignUpController.prototype.resetSignUpForm = function () {
+Login.SignUpController.prototype.resetSignUpForm = function () {
 
     var invisibleStyle = "bi-invisible",
         invalidInputStyle = "bi-invalid-input";
@@ -58,7 +58,7 @@ BookIt.SignUpController.prototype.resetSignUpForm = function () {
 
 };
 
-BookIt.SignUpController.prototype.onSignupCommand = function () {
+Login.SignUpController.prototype.onSignupCommand = function () {
 
     var me = this,
         firstName = me.$txtFirstName.val().trim(),
@@ -130,26 +130,29 @@ BookIt.SignUpController.prototype.onSignupCommand = function () {
         me.$txtPasswordConfirm.addClass(invalidInputStyle);
         return;
     }
-
+	
     $.ajax({
         type: 'POST',
-        url: BookIt.Settings.signUpUrl,
+        url: Login.Settings.signUpUrl,
         data: "email=" + emailAddress + "&firstName=" + firstName + "&lastName=" + lastName + "&password=" + password + "&passwordConfirm=" + passwordConfirm,
         success: function (resp) {
-
-            if (resp.success === true) {
+			console.log("RESP: " + resp);
+			var obj = JSON.parse(resp);
+			console.log("CODE: " + obj.code);
+			/*
+            if (obj.code == 1) {
                 $.mobile.navigate("#page-signup-succeeded");
                 return;
             } else {
-                if (resp.extras.msg) {
-                    switch (resp.extras.msg) {
-                        case BookIt.ApiMessages.DB_ERROR:
-                        case BookIt.ApiMessages.COULD_NOT_CREATE_USER:
+                if (obj.data) {
+                    switch (obj.error_code) {
+                        case Login.ApiMessages.DB_ERROR:
+                        case Login.ApiMessages.COULD_NOT_CREATE_USER:
                             // TODO: Use a friendlier error message below.
-                            me.$ctnErr.html("<p>Oops! BookIt had a problem and could not register you.  Please try again in a few minutes.</p>");
+                            me.$ctnErr.html("<p>Oops! Login had a problem and could not register you.  Please try again in a few minutes.</p>");
                             me.$ctnErr.addClass("bi-ctn-err").slideDown();
                             break;
-                        case BookIt.ApiMessages.EMAIL_ALREADY_EXISTS:
+                        case Login.ApiMessages.EMAIL_ALREADY_EXISTS:
                             me.$ctnErr.html("<p>The email address that you provided is already registered.</p>");
                             me.$ctnErr.addClass("bi-ctn-err").slideDown();
                             me.$txtEmailAddress.addClass(invalidInputStyle);
@@ -157,11 +160,12 @@ BookIt.SignUpController.prototype.onSignupCommand = function () {
                     }
                 }
             }
+			*/
         },
         error: function (e) {
-            console.log(e.message);
+            console.log("ERROR: " + e.message);
             // TODO: Use a friendlier error message below.
-            me.$ctnErr.html("<p>Oops! BookIt had a problem and could not register you.  Please try again in a few minutes.</p>");
+            me.$ctnErr.html("<p>sas Oops! Login had a problem and could not register you.  Please try again in a few minutes.</p>");
             me.$ctnErr.addClass("bi-ctn-err").slideDown();
         }
     });

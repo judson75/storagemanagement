@@ -78,17 +78,17 @@ Login.SignInController.prototype.onSignInCommand = function () {
     $.ajax({
         type: 'POST',
         url: Login.Settings.signInUrl,
-        data: "email=" + emailAddress + "&password=" + password,
+        data: {'email': emailAddress, 'password' : password},
         success: function (resp) {
             $.mobile.loading("hide");
-            if (resp.success === true) {
+            if (resp.code == 1) {
                 // Create session. 
                 var today = new Date();
                 var expirationDate = new Date();
                 expirationDate.setTime(today.getTime() + Login.Settings.sessionTimeoutInMSec);
                 Login.Session.getInstance().set({
-                    userProfileModel: resp.extras.userProfileModel,
-                    sessionId: resp.extras.sessionId,
+                    userProfileModel: resp.userProfileModel,
+                    sessionId: resp.sessionId,
                     expirationDate: expirationDate,
                     keepSignedIn:me.$chkKeepSignedIn.is(":checked")
                 });
@@ -96,6 +96,9 @@ Login.SignInController.prototype.onSignInCommand = function () {
                 $.mobile.navigate(me.mainMenuPageId);
                 return;
             } else {
+				me.$ctnErr.html("<p>Oops! Login had a problem and could not log you on. Please try again in a few minutes.</p>");
+                me.$ctnErr.addClass("bi-ctn-err").slideDown();
+				/*
                 if (resp.extras.msg) {
                     switch (resp.extras.msg) {
                         case Login.ApiMessages.DB_ERROR:
@@ -107,11 +110,11 @@ Login.SignInController.prototype.onSignInCommand = function () {
                         case Login.ApiMessages.EMAIL_NOT_FOUND:
                             me.$ctnErr.html("<p>You entered a wrong username or password.  Please try again.</p>");
                             me.$ctnErr.addClass("bi-ctn-err").slideDown();
-                            me.$txtEmailAddress
-.addClass(invalidInputStyle);
+                            me.$txtEmailAddress.addClass(invalidInputStyle);
                             break;
                     }
                 }
+				*/
             }
         },
         error: function (e) {

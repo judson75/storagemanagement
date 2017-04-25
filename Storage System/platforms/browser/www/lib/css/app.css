@@ -12,6 +12,8 @@ h3 { font-size: 32px; margin: 10px 0 15px 0; }
 #head-logo { text-align: center;}
 #head-logo img { max-width: 200px; height: auto; margin: 10px auto; }
 
+#home-button { margin-top: 10px; }
+
 .ui-bar-c,
 .ui-page-theme-c .ui-bar-inherit,
 html .ui-bar-c .ui-bar-inherit,
