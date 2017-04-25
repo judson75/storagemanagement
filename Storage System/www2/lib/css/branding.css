@@ -1,0 +1,60 @@
+@font-face {
+    font-family: 'UniversCondensed';
+    src: url('fonts/Univers-Condensed.eot') format('embedded-opentype'),
+    	url('fonts/Univers-Condensed.ttf') format('truetype'),
+    	url('fonts/Univers-Condensed.otf') format('opentype'),
+        url('fonts/Univers-Condensed.woff') format('woff');
+}
+
+@font-face {
+    font-family: 'UniversCondensedLight';
+    src: url('fonts/Univers-CondensedLight.eot') format('embedded-opentype'),
+    	url('fonts/Univers-CondensedLight.ttf') format('truetype'),
+    	url('fonts/Univers-CondensedLight.otf') format('opentype'),
+        url('fonts/Univers-CondensedLight.woff') format('woff');
+}
+
+@font-face {
+    font-family: 'UniversCondensedBold';
+    src: url('fonts/Univers-CondensedBold.eot') format('embedded-opentype'),
+    	url('fonts/Univers-CondensedBold.ttf') format('truetype'),
+    	url('fonts/Univers-CondensedBold.otf') format('opentype'),
+        url('fonts/Univers-CondensedBold.woff') format('woff');
+}
+
+@font-face {
+    font-family: 'UniversExtraBlackExt';
+    src: url('fonts/Univers-ExtraBlackExt.eot') format('embedded-opentype'),
+    	url('fonts/Univers-ExtraBlackExt.ttf') format('truetype'),
+    	url('fonts/Univers-ExtraBlackExt.otf') format('opentype'),
+        url('fonts/Univers-ExtraBlackExt.woff') format('woff');
+}
+
+body { background: #1f262b; color: #fff;}
+
+.statusbar-overlay { background: #c40500;}
+.table { border: 1px solid #303b43; }
+.table tbody td { color: #fff; }
+.table tbody tr:nth-child(even) {background: #242c32; }
+.table-search { }
+.navbar { background: #000; color: #fff; }
+.navbar a { color: #fff; }
+#head-logo {  }
+	#head-logo img { }
+.welcome-header { font-family: UniversCondensed, arial, san-serif; color: #fff; }
+.page-header { background: #c40500; color: #FFF; font-family: UniversCondensed, arial, san-serif; }
+.page { background: #1f262b; color: #fff; }
+.navbar::after, .toolbar::before { background-color: #c40500; }
+#dashboardMenuWrapper { }
+.dashboardMenu { }
+.dashboardMenu a, ul.select-buttons li { color: #FFF;
+	background: #c40500;	
+	background: -webkit-linear-gradient(#8e0400 0%, #c40500 100%);
+	background: -o-linear-gradient(#8e0400 0%, #c40500 100%);
+	background: linear-gradient(#8e0400 0%, #c40500 100%); 
+	filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#8e0400', endColorstr='#c40500',GradientType=0 );
+	font-family: UniversCondensed, arial, san-serif;
+}
+.dashboardMenu i { font-size: 48px; display: block; margin: 0 0 -12px 0; }
+.toolbar { background: #007aff; color: #fff; font-family: UniversCondensed, arial, san-serif; }
+.toolbar a { color: #fff; }
