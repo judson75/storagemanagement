@@ -11,9 +11,11 @@ body {
 h3 { font-size: 32px; margin: 10px 0 15px 0; }
 #head-logo { text-align: center;}
 #head-logo img { max-width: 200px; height: auto; margin: 10px auto; }
-
 #home-button { margin-top: 10px; }
-
+#dashboardMenuWrapper { margin: 0 auto; margin: 0 auto; }
+.dashboardMenu { display: block; width: 95%; margin: 0 auto 1em auto; }
+.dashboardMenu a, ul.select-buttons li { display: block; padding: 6px 20px; font-size: 18px; line-height: 18px; text-align: center; box-sizing: border-box; margin: 0 auto 1em auto; }
+.dashboardMenu i { font-size: 48px; display: block; margin: 0 0 -12px 0; }
 /* Loader */
 .ui-icon-loading {
 	background: url("../img/ajax-loader.gif");

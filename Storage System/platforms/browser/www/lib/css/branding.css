@@ -31,10 +31,12 @@
 }
 
 body { background: #1f262b; color: #fff;}
-h1,h2,h3,h4,h5 {
+h1,h3,h5 {
     color: #c40500;
 	font-family: UniversCondensed, arial, san-serif;
 }
+
+h2, h4 { color: #fff; }
 .statusbar-overlay { background: #c40500;}
 .table { border: 1px solid #303b43; }
 .table tbody td { color: #fff; }
@@ -57,7 +59,9 @@ h1,h2,h3,h4,h5 {
 	background: linear-gradient(#8e0400 0%, #c40500 100%); 
 	filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#8e0400', endColorstr='#c40500',GradientType=0 );
 	font-family: UniversCondensed, arial, san-serif;
+	color: #fff;
 }
+.dashboardMenu a.ui-link { color: #fff !important; text-decoration: none !important}
 .dashboardMenu i { font-size: 48px; display: block; margin: 0 0 -12px 0; }
 .toolbar { background: #007aff; color: #fff; font-family: UniversCondensed, arial, san-serif; }
 .toolbar a { color: #fff; }
