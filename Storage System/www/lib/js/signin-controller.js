@@ -90,11 +90,14 @@ Login.SignInController.prototype.onSignInCommand = function () {
                 Login.Session.getInstance().set({
                     userProfileModel: resp.userProfileModel,
                     sessionId: resp.sessionId,
+                    first_name: resp.first_name,
+                    locations: resp.locations,
+                    last_name: resp.last_name,
                     expirationDate: expirationDate,
                     keepSignedIn:me.$chkKeepSignedIn.is(":checked")
                 });
                 // Go to main menu.
-                $.mobile.navigate(me.mainMenuPageId);
+      //          $.mobile.navigate(me.mainMenuPageId);
                 return;
             } else {
 				me.$ctnErr.html("<p>Oops! Login had a problem and could not log you on. Please try again in a few minutes.</p>");

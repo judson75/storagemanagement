@@ -68,8 +68,35 @@ $(document).delegate("#page-signin", "pagebeforecreate", function () {
     });
 });
 
+$(document).on('click', '#select-locations li', function() {
+	var location_id = $(this).attr('data-id');
+	var location_office_id = $(this).attr('data-office-id');
+	if (typeof(Storage) !== "undefined") {
+		localStorage.setItem("office_id", location_office_id);
+	}
+	//get location details...
+	common.locationDetails(location_id);
+});
+
+
+$(document).on('click', '#select-location li', function() {
+	var location_id = $(this).attr('data-id');
+	var location_type = $(this).attr('data-type');
+	//get location details...
+	common.locationUnits(location_id, location_type);
+});
+
+$(document).on('click', '#select-units li', function() {
+	var location_id = $(this).attr('data-id');
+	var location_type = $(this).attr('data-type');
+	//get location details...
+	common.unitDetails(location_id, location_type);
+});
+
+
 $(document).on("pagecontainerbeforechange", function (event, ui) {
     if (typeof ui.toPage !== "object") return;
+    console.log(ui.toPage.attr("id"));
     switch (ui.toPage.attr("id")) {
         case "page-index":
             if (!ui.prevPage) {
@@ -77,7 +104,34 @@ $(document).on("pagecontainerbeforechange", function (event, ui) {
                 var session = Login.Session.getInstance().get(),
                     today = new Date();
                 if (session && session.keepSignedIn && new Date(session.expirationDate).getTime() > today.getTime()) {
-                    ui.toPage = $("#page-main-menu");                }
+                    ui.toPage = $("#page-main-menu");                
+                }
             }
+        break;
+        case 'page-rent':
+        	$.mobile.loading("show");
+        	//var session = Login.Session.getInstance().get(),
+            //        today = new Date();
+            console.log(session);
+            
+			//If sessions locations not set...
+			common.getLocations();
+	//console.log("LOC: " + common.locations);		
+			//If locations populate page
+			//var locationString = JSON.stringify(locations);
+			//var html = common.buildLocationsList(locationString);	
+        break;
+        case 'page-payments':
+        	$.mobile.loading("show");
+        	var html = '';
+			//No units to show
+			html += '<p>You do not have any units associated with your account. Pleae enter your unit number and access code below!</p>';
+			html += '<label for="unit_number">Unit #</label>';
+            html += '<input type="text" name="unit_number" id="unit_number" value="">';
+            html += '<label for="access_code">Access Code</label>';
+            html += '<input type="text" name="access_code" id="access_code" value="">';
+            html += '<button id="btn-submit" class="ui-btn ui-btn-b ui-corner-all mc-top-margin-1-5">Submit</button>';
+			$('.ui-content').html(html);
+        break;
     }
 });

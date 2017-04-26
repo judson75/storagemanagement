@@ -139,11 +139,12 @@ Login.SignUpController.prototype.onSignupCommand = function () {
 			console.log("RESP: " + resp);
 			var obj = JSON.parse(resp);
 			console.log("CODE: " + obj.code);
-			/*
+			
             if (obj.code == 1) {
-                $.mobile.navigate("#page-signup-succeeded");
+               //$.mobile.navigate("#page-signup-succeeded");/
+               $('#dlg-sign-up-sent').show();
                 return;
-            } else {
+            } else {/*
                 if (obj.data) {
                     switch (obj.error_code) {
                         case Login.ApiMessages.DB_ERROR:
@@ -158,9 +159,9 @@ Login.SignUpController.prototype.onSignupCommand = function () {
                             me.$txtEmailAddress.addClass(invalidInputStyle);
                             break;
                     }
-                }
+                }			*/
             }
-			*/
+
         },
         error: function (e) {
             console.log("ERROR: " + e.message);
