@@ -1,0 +1,40 @@
+<div class="navbar">
+    <div class="navbar-inner">
+        <div class="left">
+            <a href="#" class="back link" id="home-link">
+                <i class="fa fa-home" aria-hidden="true"></i>
+            </a>
+        </div>
+        <div class="center"><img src="lib/img/logo.png"></div>
+        <div class="right">
+            <a href="#" class="link icon-only open-panel"><i class="icon icon-bars"></i></a>
+        </div>
+    </div>
+</div>
+<div class="pages">
+    <div data-page="login" class="page">
+        <div class="page-content">
+            <div class="content-block" id="page-login">
+				<h3>Sign In</h3>
+				<div id="ctn-err" class="bi-invisible"></div>
+				<label for="txt-email">Email Address</label>
+				<input type="text" name="txt-email" id="txt-email" value="">
+				<label for="txt-password">Password</label>
+				<input type="password" name="txt-password" id="txt-password" value="">
+				<fieldset data-role="controlgroup">
+					<input type="checkbox" name="chck-rememberme" id="chck-rememberme">
+					<label for="chck-rememberme">Remember me</label>
+				</fieldset>
+				<button id="btn-submit" class="ui-btn">Submit</button>
+				<p class="mc-top-margin-1-5"><a href="password-reset.html">Can't access your account?</a></p>
+				<div data-role="popup" id="dlg-invalid-credentials" data-dismissible="false" style="max-width:400px;">
+					<div role="main" class="ui-content">
+						<h3 class="mc-text-danger">Login Failed</h3>
+						<p>Did you enter the right credentials?</p>
+						<div class="mc-text-center"><a href="#" data-rel="back" class="ui-btn ui-corner-all ui-shadow ui-btn-b mc-top-margin-1-5">OK</a></div>
+					</div>
+				</div>
+			</div>
+        </div>
+    </div>
+</div>

@@ -31,6 +31,10 @@ var app = {
 
 app.initialize();
 
+$(document).ready(function(){
+	$("#menu").load("menu.html");
+});
+
 $(document).on("mobileinit", function (event, ui) {
     $.mobile.defaultPageTransition = "slide";
 });
@@ -44,13 +48,42 @@ $(document).on("pagecontainerbeforeshow", function (event, ui) {
             case "page-signup":
                 // Reset the signup form.
                 app.signupController.resetSignUpForm();
-                break;
+            break;
 			case "page-signin":
                 // Reset signin form.
                 app.signinController.resetSignInForm();
-                break;
+            break;
+			case "page-main-menu":
+				
+			break;
         }
     }
+});
+
+$(document).on('click', '#logout', function() {
+	window.localStorage.clear();
+});
+
+$(document).on('click', '.open-panel', function() {
+	if($('#menu').hasClass('open')) {
+		$('#menu').removeClass('open');
+		$('#menu').animate({
+			left: '-320px',
+		});
+	}
+	else {
+		$('#menu').addClass('open');
+		$('#menu').animate({
+			left: '0',
+		});
+	}
+});
+
+$(document).on('click', '#menu li a', function() {
+	$('#menu').removeClass('open');
+	$('#menu').animate({
+		left: '-320px',
+	});
 });
 
 $(document).delegate("#page-signup", "pagebeforecreate", function () {
@@ -68,8 +101,35 @@ $(document).delegate("#page-signin", "pagebeforecreate", function () {
     });
 });
 
+$(document).on('click', '#select-locations li', function() {
+	var location_id = $(this).attr('data-id');
+	var location_office_id = $(this).attr('data-office-id');
+	if (typeof(Storage) !== "undefined") {
+		localStorage.setItem("office_id", location_office_id);
+	}
+	//get location details...
+	common.locationDetails(location_id);
+});
+
+
+$(document).on('click', '#select-location li', function() {
+	var location_id = $(this).attr('data-id');
+	var location_type = $(this).attr('data-type');
+	//get location details...
+	common.locationUnits(location_id, location_type);
+});
+
+$(document).on('click', '#select-units li', function() {
+	var location_id = $(this).attr('data-id');
+	var location_type = $(this).attr('data-type');
+	//get location details...
+	common.unitDetails(location_id, location_type);
+});
+
+
 $(document).on("pagecontainerbeforechange", function (event, ui) {
     if (typeof ui.toPage !== "object") return;
+    console.log(ui.toPage.attr("id"));
     switch (ui.toPage.attr("id")) {
         case "page-index":
             if (!ui.prevPage) {
@@ -77,7 +137,50 @@ $(document).on("pagecontainerbeforechange", function (event, ui) {
                 var session = Login.Session.getInstance().get(),
                     today = new Date();
                 if (session && session.keepSignedIn && new Date(session.expirationDate).getTime() > today.getTime()) {
-                    ui.toPage = $("#page-main-menu");                }
+                    ui.toPage = $("#page-main-menu");
+					//INSERT USERNAME TO WELCOME
+					console.log("SESS: " + session);
+                }
             }
+        break;
+		case "page-main-menu":
+			var session = Login.Session.getInstance().get();
+			if (session) {
+				//INSERT USERNAME TO WELCOME
+				//console.log("SESS: " + session);
+				$('#welcome-message').html("Welcome " + session.first_name + "!");
+			}
+			else {
+				
+			}
+		break;
+        case 'page-rent':
+        	$.mobile.loading("show");
+        	var session = Login.Session.getInstance().get();
+            console.log(session);
+            if (session.locations != null) {
+				
+			}
+			else {
+				//If sessions locations not set...
+				common.getLocations();
+			}
+	//console.log("LOC: " + common.locations);		
+			//If locations populate page
+			//var locationString = JSON.stringify(locations);
+			//var html = common.buildLocationsList(locationString);	
+        break;
+        case 'page-payments':
+        	$.mobile.loading("show");
+        	var html = '';
+			//No units to show
+			html += '<p>You do not have any units associated with your account. Pleae enter your unit number and access code below!</p>';
+			html += '<label for="unit_number">Unit #</label>';
+            html += '<input type="text" name="unit_number" id="unit_number" value="">';
+            html += '<label for="access_code">Access Code</label>';
+            html += '<input type="text" name="access_code" id="access_code" value="">';
+            html += '<button id="btn-submit" class="ui-btn ui-btn-b ui-corner-all mc-top-margin-1-5">Submit</button>';
+			$('.ui-content').html(html);
+        break;
     }
 });

@@ -31,6 +31,10 @@ var app = {
 
 app.initialize();
 
+$(document).ready(function(){
+	$("#menu").load("menu.html");
+});
+
 $(document).on("mobileinit", function (event, ui) {
     $.mobile.defaultPageTransition = "slide";
 });
@@ -44,14 +48,61 @@ $(document).on("pagecontainerbeforeshow", function (event, ui) {
             case "page-signup":
                 // Reset the signup form.
                 app.signupController.resetSignUpForm();
-                break;
+            break;
 			case "page-signin":
                 // Reset signin form.
                 app.signinController.resetSignInForm();
-                break;
+            break;
+			case "page-main-menu":
+				
+			break;
         }
     }
 });
+
+$(document).on('click', '#logout', function() {
+	window.localStorage.clear();
+});
+
+$('html').click(function() {
+  	closeMenu();
+});
+
+$(document).on('click', '.open-panel', function() {
+	if($('#menu').hasClass('open')) {
+		closeMenu();
+	}
+	else {
+		openMenu();
+	}
+});
+
+$(document).on('click', '#menu li a', function() {
+	closeMenu();
+});
+
+$('#menu').click(function(event){
+    event.stopPropagation();
+});
+
+function openMenu() {
+	$('#menu').addClass('open');
+	$('#menu').animate({
+		left: '0',
+	});
+	$('body').append('<div class="pageOverlay"></div>');
+	$('body').addClass('noscroll');
+}
+
+function closeMenu() {
+	$('#menu').removeClass('open');
+	$('#menu').animate({
+		left: '-290px',
+	});
+	$('.pageOverlay').remove();
+	$('body').removeClass('noscroll');
+
+}
 
 $(document).delegate("#page-signup", "pagebeforecreate", function () {
     app.signupController.init();
@@ -104,18 +155,34 @@ $(document).on("pagecontainerbeforechange", function (event, ui) {
                 var session = Login.Session.getInstance().get(),
                     today = new Date();
                 if (session && session.keepSignedIn && new Date(session.expirationDate).getTime() > today.getTime()) {
-                    ui.toPage = $("#page-main-menu");                
+                    ui.toPage = $("#page-main-menu");
+					//INSERT USERNAME TO WELCOME
+					console.log("SESS: " + session);
                 }
             }
         break;
+		case "page-main-menu":
+			var session = Login.Session.getInstance().get();
+			if (session) {
+				//INSERT USERNAME TO WELCOME
+				//console.log("SESS: " + session);
+				$('#welcome-message').html("Welcome " + session.first_name + "!");
+			}
+			else {
+				
+			}
+		break;
         case 'page-rent':
         	$.mobile.loading("show");
-        	//var session = Login.Session.getInstance().get(),
-            //        today = new Date();
+        	var session = Login.Session.getInstance().get();
             console.log(session);
-            
-			//If sessions locations not set...
-			common.getLocations();
+            if (session.locations != null) {
+				
+			}
+			else {
+				//If sessions locations not set...
+				common.getLocations();
+			}
 	//console.log("LOC: " + common.locations);		
 			//If locations populate page
 			//var locationString = JSON.stringify(locations);
@@ -131,7 +198,7 @@ $(document).on("pagecontainerbeforechange", function (event, ui) {
             html += '<label for="access_code">Access Code</label>';
             html += '<input type="text" name="access_code" id="access_code" value="">';
             html += '<button id="btn-submit" class="ui-btn ui-btn-b ui-corner-all mc-top-margin-1-5">Submit</button>';
-			$('.ui-content').html(html);
+			$('#page-payments .ui-content').html(html);
         break;
     }
 });

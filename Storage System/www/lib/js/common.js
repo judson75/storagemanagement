@@ -42,7 +42,6 @@
 	        },
 	        error: function (e) {
 	        	console.log("ERROR: " + e);
-
 	        }
 	    });
 	
@@ -55,7 +54,7 @@
 			html += '<li data-id="' + location.id + '" data-office-id="' + location.office_id + '"><b>' + location.office_id + '</b> ' + location.address + '</li>';
 		});
 		html += '</ul>';
-		$('.ui-content').html(html);
+		$('#page-rent .ui-content').html(html);
 		$.mobile.loading("hide");
 	};
 	
@@ -66,7 +65,7 @@
 		var html = '<ul class="select-buttons" id="select-location">';
 		html += '<li data-id="' + location_id + '" data-type="Climate Controlled"><span class="li-left">Climate Controlled<br><small>Climate Controlled</small></span> <span class="li-right"><small>Starting at</small><br />$93</span><span class="clr"></span></li>';
 		html += '</ul>'; 
-		$('.ui-content').html(html);
+		$('#page-rent .ui-content').html(html);
 
 	};
 	
@@ -79,7 +78,7 @@
 		html += '<li data-id="' + location_id + '" data-type="' + location_type + '" ><span class="li-left">Unit 28 (5 x 10)<br /><small>Second Floor</small></span> <span class="li-right">$93 <small>/ mo.<br /><small>$58 first mo.</small></span><span class="clr"></span></li>';
 		html += '<li data-id="' + location_id + '" data-type="' + location_type + '" ><span class="li-left">Unit 28 (5 x 10)<br /><small>Second Floor</small></span> <span class="li-right">$93 <small>/ mo.<br /><small>$58 first mo.</small></span><span class="clr"></span></li>';
 		html += '<li data-id="' + location_id + '" data-type="' + location_type + '" ><span class="li-left">Unit 28 (5 x 10)<br /><small>Second Floor</small></span> <span class="li-right">$93 <small>/ mo.<br /><small>$58 first mo.</small></span><span class="clr"></span></li>';		html += '</ul>'; 
-		$('.ui-content').html(html);
+		$('#page-rent .ui-content').html(html);
 
 	};
 
@@ -93,7 +92,7 @@
 
 		html += '<a href="#dlg-sign-up-sent" data-rel="popup" data-transition="pop" data-position-to="window" id="btn-submit" class="ui-btn ui-btn-b ui-corner-all mc-top-margin-1-5 pay-btn">Pay $78*</a>';
 		html += '<p class="mc-text-center"><small>* After the intro rate, your monthly payment will be $98 per month</small></p>';
-		$('.ui-content').html(html);
+		$('#page-rent .ui-content').html(html);
 
 	};
 

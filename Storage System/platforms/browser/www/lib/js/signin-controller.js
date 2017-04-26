@@ -80,7 +80,6 @@ Login.SignInController.prototype.onSignInCommand = function () {
         url: Login.Settings.signInUrl,
         data: {'email': emailAddress, 'password' : password},
         success: function (resp) {
-			console.log("RESP: " + resp.code);
             $.mobile.loading("hide");
             if (resp.code === 1) {
                 // Create session. 
@@ -90,6 +89,9 @@ Login.SignInController.prototype.onSignInCommand = function () {
                 Login.Session.getInstance().set({
                     userProfileModel: resp.userProfileModel,
                     sessionId: resp.sessionId,
+                    first_name: resp.first_name,
+                    locations: resp.locations,
+                    last_name: resp.last_name,
                     expirationDate: expirationDate,
                     keepSignedIn:me.$chkKeepSignedIn.is(":checked")
                 });

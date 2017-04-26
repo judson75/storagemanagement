@@ -80,7 +80,6 @@ Login.SignInController.prototype.onSignInCommand = function () {
         url: Login.Settings.signInUrl,
         data: {'email': emailAddress, 'password' : password},
         success: function (resp) {
-			console.log("RESP: " + resp.code);
             $.mobile.loading("hide");
             if (resp.code === 1) {
                 // Create session. 
@@ -97,7 +96,7 @@ Login.SignInController.prototype.onSignInCommand = function () {
                     keepSignedIn:me.$chkKeepSignedIn.is(":checked")
                 });
                 // Go to main menu.
-      //          $.mobile.navigate(me.mainMenuPageId);
+                $.mobile.navigate(me.mainMenuPageId);
                 return;
             } else {
 				me.$ctnErr.html("<p>Oops! Login had a problem and could not log you on. Please try again in a few minutes.</p>");

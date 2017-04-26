@@ -17,10 +17,14 @@
     <title>StorageMax</title>
 </head>
 <body>
+    <div class="bi-header navbar ui-header" data-role="header" data-theme="c" data-position="fixed">
+		<a href="#page-main-menu" data-icon="home" data-iconpos="notext" data-transition="slide" data-direction="reverse" id="home-button"><i class="fa fa-home" aria-hidden="true"></i></a>
+		<div id="head-logo"><img src="lib/img/logo.png"></div>
+		<div class="right">
+			<a href="#" class="link icon-only open-panel"><i class="glyph-icon web_buttons-menu-1"></i></a>
+		</div>
+	</div><!-- /header -->
     <div data-role="page" id="page-index">
-        <div data-role="header" data-theme="c" data-position="fixed">
-			<div id="head-logo"><img src="lib/img/logo.png"></div>
-        </div><!-- /header -->
         <div role="main" class="ui-content">
             <h2 class="mc-text-center">Welcome!</h2>
             <p class="mc-top-margin-1-5">Existing Users</p>
@@ -30,12 +34,9 @@
             <p></p>
         </div><!-- /content -->
     </div><!-- /page -->
-    <div class="bi-header" data-role="page" id="page-signin">
-        <div data-role="header" data-theme="c" data-position="fixed">
-            <a href="#page-index" data-icon="home" data-iconpos="notext" data-transition="slide" data-direction="reverse" id="home-button"></a>
-            <div id="head-logo"><img src="lib/img/logo.png"></div>
-        </div><!-- /header -->
+    <div data-role="page" id="page-signin">
         <div role="main" class="ui-content">
+            <div id="ctn-err" class="bi-invisible"></div>
             <h3>Sign In</h3>
             <label for="txt-email">Email Address</label>
             <input type="text" name="txt-email" id="txt-email" value="">
@@ -58,10 +59,6 @@
         </div><!-- /content -->
     </div><!-- /page -->
     <div data-role="page" id="page-signup">
-        <div class="bi-header" data-role="header" data-theme="c" data-position="fixed">
-            <a href="#page-index" data-icon="home" data-iconpos="notext" data-transition="slide" data-direction="reverse" id="home-button"></a>
-            <div id="head-logo"><img src="lib/img/logo.png"></div>
-        </div><!-- /header -->
         <div role="main" class="ui-content">
             <h3>Sign Up</h3>
             <div id="ctn-err" class="bi-invisible"></div>
@@ -90,22 +87,39 @@
             </div>
         </div><!-- /content -->
     </div><!-- /page -->
-    <div data-role="page" id="page-main-menu">
-        <div data-role="header" data-theme="c">
-            <div id="head-logo"><img src="lib/img/logo.png"></div>
-        </div><!-- /header -->
+    <div data-role="page" id="page-password-reset">
         <div role="main" class="ui-content">
-            <h2 class="mc-text-center">Welcome USERNAME!</h2>
-            <p class="mc-top-margin-1-5">Congratulations!  You are now registered with BookIt.</p>
+            <h3>Reset Password</h3>
             
+        </div><!-- /content -->
+    </div><!-- /page -->
+    <div data-role="page" id="page-settings">
+        <div role="main" class="ui-content">
+            <h3>Settings</h3>
+            
+        </div><!-- /content -->
+    </div><!-- /page -->
+    <div data-role="page" id="page-main-menu">
+        <div role="main" class="ui-content">
+            <h2 id="welcome-message" class="mc-text-center">Welcome!</h2>
+            <p class="mc-top-margin-1-5">Congratulations! You are now registered.</p>
 			<div id="dashboardMenuWrapper">
-			<h2 class="welcome-header">Welcome Back Judson!</h2>
-			<div class="dashboardMenu"><a href="payments.html">Make Payment</a></div>
-			<div class="dashboardMenu"><a href="rent.html">Rent Unit</a></div>
+			<div class="dashboardMenu"><a href="#page-payments">Make Payment</a></div>
+			<div class="dashboardMenu"><a href="#page-rent">Rent Unit</a></div>
 		    </div>
             <p></p>
         </div><!-- /content -->
     </div><!-- /page -->
+    <div data-role="page" id="page-rent">
+    	<div class="page-header">Rent Unit</div>
+        <div role="main" class="ui-content"></div><!-- /content -->
+	</div>
+    <div data-role="page" id="page-payments">
+    	<div class="page-header">Make A Payment</div>
+        <div role="main" class="ui-content"></div><!-- /content -->
+	</div>
+   
+    <div id="menu"></div>
     <script type="text/javascript" src="cordova.js"></script>
     <script src="lib/js/fastclick/fastclick.min.js"></script>
     <script src="lib/js/jquery/2.1.1/jquery-2.1.1.min.js"></script>

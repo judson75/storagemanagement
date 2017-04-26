@@ -17,7 +17,10 @@ Login.Session = (function () {
                 } 
 				catch(e){}
                 return result;
-            }
+            },
+			clear: function () {
+				window.localStorage.clear();
+			}
         };
     };
 

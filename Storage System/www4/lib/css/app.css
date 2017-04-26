@@ -1,0 +1,12 @@
+
+html, * { box-sizing: border-box; }
+body {}
+input[type="text"], input[type="password"], select { width: 100%; margin: 5px 0 10px 0; padding: 5px; font-size: 18px; -webkit-border-radius: 3px; -moz-border-radius: 3px; border-radius: 3px; }
+.splash { position: fixed; height: 100%; width: 100%; top: 0; left: 0; display: block; z-index: 9999; }
+.splash img { position: absolute; top: 50%; left: 50%; margin-top: -50px; margin-left: -50px; }
+.statusbar-overlay { }
+.ui-btn { width: 100%; text-align: center; display: block; padding: 5px 10px; box-sizing: border-box; cursor: pointer; margin: 1em 0; -webkit-border-radius: 3px; -moz-border-radius: 3px; border-radius: 3px; }
+#page-main-menu { display: none; }
+@media (min-width: 400px) {
+	.splash { display: none; }
+}
